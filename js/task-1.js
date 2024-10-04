@@ -2,12 +2,7 @@
 
 /* Task 1 */
 
-const getUserNames = users => {
-  const arrOfNames = [];
-  users.map(({ name }) => arrOfNames.push(name));
-
-  return arrOfNames;
-};
+const getUserNames = users => users.map(({ name }) => name);
 
 console.log(
   getUserNames([
