@@ -1,7 +1,5 @@
 'use scrict';
 
-/* Task 1 */
-
 const getUserNames = users => users.map(({ name }) => name);
 
 console.log(
