@@ -45,3 +45,38 @@ const result = obj.toSorted((first, second) => {
 // console.log(result);
 
 */
+
+// const users = [
+//   {
+//     name: 'Harry Potter',
+//     age: 17,
+//     level: 8,
+//   },
+//   {
+//     name: 'Gerold',
+//     age: 220,
+//     level: 7,
+//   },
+//   {
+//     name: 'Albus Dambldor',
+//     age: 128,
+//     level: 10,
+//   },
+//   {
+//     name: 'Ron',
+//     age: 16,
+//     level: 6,
+//   },
+// ];
+
+// function helloSorted(mass, callback) {
+//   return mass.toSorted((first, second) => {
+//     return callback(first, second);
+//   });
+// }
+
+// const condition = (a, b) => {
+//   return b.name.localeCompare(a.name);
+// };
+
+// console.log(helloSorted(users, condition));
