@@ -1,8 +1,8 @@
 'use scrict';
 
 const sortByDescendingFriendCount = users => {
-  users.toSorted((first, second) => {
-    return;
+  return users.toSorted((first, second) => {
+    return second.friends.length - first.friends.length;
   });
 };
 
