@@ -338,40 +338,75 @@ const warwick = new Champion({
 console.log(warwick.getStylius());
 */
 
-// class Champion {
-//   constructor({ xp, armor, level }) {
-//     this.xp = xp;
-//     this.armor = armor;
-//     this.level = level;
-//   }
+/* Champion 
+class Champion {
+  constructor({ xp, armor, level }) {
+    this.xp = xp;
+    this.armor = armor;
+    this.level = level;
+  }
 
-//   getXp = function (xp) {
-//     console.log('Health: ', xp);
-//   };
-// }
+  getXp(xp) {
+    console.log('Health: ', xp);
+  }
+}
 
-// class Shooter extends Champion {
-//   constructor({ name, range, accuracy, context, ...restProp } = {}) {
-//     super(restProp);
-//     this.name = name;
-//     this.range = range;
-//     this.accuracy = accuracy;
-//     this.context = context;
-//   }
-// }
+class Shooter extends Champion {
+  constructor({ name, range, accuracy, context, ...restProp } = {}) {
+    super(restProp);
+    this.name = name;
+    this.range = range;
+    this.accuracy = accuracy;
+    this.context = context;
+  }
+}
 
-// const varus = new Shooter({
-//   name: 'Varus',
-//   xp: 1002,
-//   armor: 2,
-//   range: '120%',
-//   accuracy: '93%',
-//   level: 1,
-//   context: this,
-// });
+const varus = new Shooter({
+  name: 'Varus',
+  xp: 1002,
+  armor: 2,
+  range: '120%',
+  accuracy: '93%',
+  level: 1,
+  context: this,
+});
 
-// const obj = {
-//   xp: 10002,
-// };
+console.log(varus);
+*/
 
-// console.log(varus.getXp(1002));
+/* Task from Notes 1 
+// const mass = [2, 5, 12, 10, 4];
+
+// const newMass = mass.reduce(
+//   (acc, item, index) => {
+//     if (item > acc[1]) {
+//       // 2 > 0 => [2, [0]] // 5 > 2 => [5, mass[1]] // 12 > 5  => [12, [2]] => 10 > 12 => [12, [2]]
+//       return [index, item];
+//     } else {
+//       return acc;
+//     }
+//   },
+//   [0, mass[0]]
+// );
+
+// console.log(newMass);
+
+*/
+
+/* Task from Notes 2 
+
+const mass = [
+  { name: 'Aa', tags: ['js', 'node.js'] },
+  { name: 'Ab', tags: ['Ruby', 'Vue.js'] },
+  { name: 'Ac', tags: ['js', 'React.js'] },
+  { name: 'Ad', tags: ['jquery', 'node.js'] },
+  { name: 'Ae', tags: ['js', 'node.js'] },
+];
+
+const newMass = mass.reduce((acc, tweet) => {
+  return [...acc, ...tweet.tags];
+}, []);
+
+console.log(newMass);
+
+*/
