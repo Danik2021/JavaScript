@@ -15,12 +15,11 @@ const condition = {
 
 function handleBlurInput() {
   const minwidth = valdationInputEl.dataset.length;
-  const value = Number(valdationInputEl.value);
-
-  if (value > minwidth) {
-    condition.addRight();
-  } else if (value < minwidth) {
+  const value = valdationInputEl.value.length;
+  if (value < minwidth) {
     condition.addError();
+  } else if (value >= minwidth) {
+    condition.addRight();
   }
 }
 
