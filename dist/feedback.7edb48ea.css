@@ -3,33 +3,33 @@
 }
 
 .feedback-form {
-  display: flex;
+  background-color: var(--background-form);
+  border: 1px solid #0000001f;
+  border-radius: 4px;
   flex-direction: column;
   max-width: 480px;
   padding: 12px;
-  background-color: var(--background-form);
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 4px;
+  display: flex;
 }
 
 .feedback-form label {
-  display: flex;
   flex-direction: column;
   margin-bottom: 16px;
+  display: flex;
 }
 
 .feedback-form button {
-  padding: 8px 12px;
   font: inherit;
   cursor: pointer;
+  padding: 8px 12px;
 }
 
-input,
-textarea {
-  padding: 8px;
+input, textarea {
   font: inherit;
+  padding: 8px;
 }
 
 textarea {
   resize: none;
 }
+/*# sourceMappingURL=feedback.7edb48ea.css.map */
