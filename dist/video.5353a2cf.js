@@ -603,9 +603,9 @@ var _lodashThrottle = require("lodash.throttle");
 var _lodashThrottleDefault = parcelHelpers.interopDefault(_lodashThrottle);
 const videoEl = document.querySelector('#vimeo-player');
 const player = new (0, _playerDefault.default)(videoEl);
-player.on('pause', (0, _lodashThrottleDefault.default)(function(timeupdata) {
+player.on('timeupdate', (0, _lodashThrottleDefault.default)((timeupdata)=>{
     localStorage.setItem('videoplayer-current-time', JSON.stringify(timeupdata.seconds));
-}, 5000));
+}, 1000));
 window.addEventListener('load', ()=>{
     player.setCurrentTime(localStorage.getItem('videoplayer-current-time'));
 }); // Завдання 2 - відеоплеєр

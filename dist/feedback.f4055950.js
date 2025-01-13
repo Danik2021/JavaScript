@@ -599,10 +599,10 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _lodashThrottle = require("lodash.throttle");
 var _lodashThrottleDefault = parcelHelpers.interopDefault(_lodashThrottle);
-const formEl = document.querySelector('.feedback-form');
+const form = document.querySelector('.feedback-form');
 const dataForm = {};
-formEl.addEventListener('submit', handleSubmitForm);
-formEl.addEventListener('input', (0, _lodashThrottleDefault.default)(updateLocalStorage, 500));
+form.addEventListener('submit', handleSubmitForm);
+form.addEventListener('input', (0, _lodashThrottleDefault.default)(updateLocalStorage, 500));
 function handleSubmitForm(e) {
     e.preventDefault();
     e.currentTarget.reset();

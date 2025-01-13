@@ -1,5 +1,5 @@
 {
-  "name": "javascript",
+  "name": "my-vimeo-player",
   "version": "1.0.0",
   "scripts": {
     "start": "parcel src/templates/*.html --port 8888",

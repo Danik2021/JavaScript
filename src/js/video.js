@@ -6,10 +6,10 @@ const videoEl = document.querySelector('#vimeo-player');
 const player = new Player(videoEl);
 
 player.on(
-  'pause',
-  throttle(function (timeupdata) {
+  'timeupdate',
+  throttle(timeupdata => {
     localStorage.setItem('videoplayer-current-time', JSON.stringify(timeupdata.seconds));
-  }, 5000)
+  }, 1000)
 );
 
 window.addEventListener('load', () => {

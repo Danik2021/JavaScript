@@ -1,10 +1,10 @@
 import throttle from 'lodash.throttle';
 
-const formEl = document.querySelector('.feedback-form');
+const form = document.querySelector('.feedback-form');
 const dataForm = {};
 
-formEl.addEventListener('submit', handleSubmitForm);
-formEl.addEventListener('input', throttle(updateLocalStorage, 500));
+form.addEventListener('submit', handleSubmitForm);
+form.addEventListener('input', throttle(updateLocalStorage, 500));
 
 function handleSubmitForm(e) {
   e.preventDefault();
