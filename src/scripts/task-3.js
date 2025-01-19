@@ -1,4 +1,5 @@
 import Notiflix from "notiflix";
+import { enqueuePromise, executePromise } from "./helpers/executePromise";
 
 const refs = {
     firstDelay: document.querySelector(".delay"),
@@ -37,11 +38,11 @@ function start(event) {
             currentPromise
                 .then((data) => {
                     Notiflix.Notify.success(`Result :>> ${data.result}`);
-                    if (promiseIds[data.index + 1] !== undefined) enqueuePromise();
+                    executePromise(promiseIds, data);
                 })
                 .catch((data) => {
                     Notiflix.Notify.failure(`Result :>> ${data.result}`);
-                    if (promiseIds[data.index + 1] !== undefined) enqueuePromise();
+                    executePromise(promiseIds, data);
                 });
         };
 
