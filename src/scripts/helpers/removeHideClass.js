@@ -1,3 +1,5 @@
+import { hideClass } from "./addHideClass";
+
 export function removeHideClass(elem) {
-    elem.classList.remove("hide");
+    elem.classList.remove(hideClass);
 }

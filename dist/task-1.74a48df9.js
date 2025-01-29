@@ -598,19 +598,23 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"gmbQR":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "CAT_API_URl", ()=>CAT_API_URl);
+parcelHelpers.export(exports, "catsByBreedsURL", ()=>catsByBreedsURL);
 parcelHelpers.export(exports, "refs", ()=>refs);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _catApi = require("./helpers/cat-api");
 const API_KEY = "live_xFhCb8xn5azc6PLJ4Wadu3S0BtQE0UFEHJHmGH5tjJsSiTA6tca4DKwmBh0kiZKk";
 (0, _axiosDefault.default).defaults.headers.common["x-api-key"] = API_KEY;
+const CAT_API_URl = "https://api.thecatapi.com/v1/images/";
+const catsByBreedsURL = `${CAT_API_URl}search?limit=10&has_breeds=true&api_key=${API_KEY}`;
 const refs = {
     select: document.querySelector(".breed-select"),
     loader: document.querySelector(".loader"),
     dataLoader: document.querySelector(".date-loader"),
     catsCont: document.querySelector(".cat-info")
 };
-(0, _catApi.fetchBreeds)(API_KEY);
+(0, _catApi.fetchBreeds)();
 
 },{"axios":"jo6P5","./helpers/cat-api":"dUIss","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jo6P5":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -5566,9 +5570,9 @@ var _notiflixDefault = parcelHelpers.interopDefault(_notiflix);
 var _task1 = require("../task-1");
 var _addHideClass = require("./addHideClass");
 var _removeHideClass = require("./removeHideClass");
-function fetchBreeds(API_KEY) {
+function fetchBreeds() {
     (0, _task1.refs).loader.classList.remove("hide");
-    fetch(`https://api.thecatapi.com/v1/images/search?limit=10&has_breeds=true&api_key=${API_KEY}`).then((r)=>r.json()).then((cats)=>{
+    fetch(`${(0, _task1.catsByBreedsURL)}`).then((r)=>r.json()).then((cats)=>{
         (0, _addHideClass.addHideClass)((0, _task1.refs).loader);
         (0, _removeHideClass.removeHideClass)((0, _task1.refs).select);
         cats.forEach(({ breeds, id })=>{
@@ -5591,13 +5595,13 @@ function addCat(e) {
 function fetchCatByBreed(e) {
     e.preventDefault();
     (0, _removeHideClass.removeHideClass)((0, _task1.refs).dataLoader);
-    fetch(`https://api.thecatapi.com/v1/images/${e.target.value}`).then((r)=>r.json()).then(({ breeds, url })=>{
+    fetch(`${(0, _task1.CAT_API_URl)}${e.target.value}`).then((r)=>r.json()).then(({ breeds, url })=>{
         (0, _addHideClass.addHideClass)((0, _task1.refs).dataLoader);
         (0, _task1.refs).catsCont.insertAdjacentHTML("beforeend", `<img src=${url}><div><h2>${breeds[0].name}</h2><p>${breeds[0].description}</p><p class="cat-api__temperament">${breeds[0].temperament}</p><div/> `);
     });
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","notiflix":"fO4S3","../task-1":"gmbQR","./addHideClass":"fVSg5","./removeHideClass":"eXB7V"}],"fO4S3":[function(require,module,exports,__globalThis) {
+},{"notiflix":"fO4S3","../task-1":"gmbQR","./addHideClass":"fVSg5","./removeHideClass":"eXB7V","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fO4S3":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 /* Notiflix AIO (https://notiflix.github.io) - Version: 3.2.8 - Author: Furkan (https://github.com/furcan) - Copyright 2019 - 2025 Notiflix, MIT License (https://opensource.org/licenses/MIT) */ (function(t, e) {
     "function" == typeof define && define.amd ? define([], function() {
@@ -6359,19 +6363,22 @@ var global = arguments[3];
 },{}],"fVSg5":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "hideClass", ()=>hideClass);
 parcelHelpers.export(exports, "addHideClass", ()=>addHideClass);
+const hideClass = "hide";
 function addHideClass(elem) {
-    elem.classList.add("hide");
+    elem.classList.add(hideClass);
 }
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eXB7V":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "removeHideClass", ()=>removeHideClass);
+var _addHideClass = require("./addHideClass");
 function removeHideClass(elem) {
-    elem.classList.remove("hide");
+    elem.classList.remove((0, _addHideClass.hideClass));
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["5WMhi","gmbQR"], "gmbQR", "parcelRequire94c2")
+},{"./addHideClass":"fVSg5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["5WMhi","gmbQR"], "gmbQR", "parcelRequire94c2")
 
 //# sourceMappingURL=task-1.74a48df9.js.map

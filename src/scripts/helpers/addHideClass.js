@@ -1,3 +1,5 @@
+export const hideClass = "hide";
+
 export function addHideClass(elem) {
-    elem.classList.add("hide");
+    elem.classList.add(hideClass);
 }

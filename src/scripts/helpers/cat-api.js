@@ -2,10 +2,12 @@ import Notiflix from "notiflix";
 import { refs } from "../task-1";
 import { addHideClass } from "./addHideClass";
 import { removeHideClass } from "./removeHideClass";
+import { catsByBreedsURL } from "../task-1";
+import { CAT_API_URl } from "../task-1";
 
-export function fetchBreeds(API_KEY) {
+export function fetchBreeds() {
     refs.loader.classList.remove("hide");
-    fetch(`https://api.thecatapi.com/v1/images/search?limit=10&has_breeds=true&api_key=${API_KEY}`)
+    fetch(`${catsByBreedsURL}`)
         .then((r) => r.json())
         .then((cats) => {
             addHideClass(refs.loader);
@@ -33,7 +35,7 @@ function addCat(e) {
 function fetchCatByBreed(e) {
     e.preventDefault();
     removeHideClass(refs.dataLoader);
-    fetch(`https://api.thecatapi.com/v1/images/${e.target.value}`)
+    fetch(`${CAT_API_URl}${e.target.value}`)
         .then((r) => r.json())
         .then(({ breeds, url }) => {
             addHideClass(refs.dataLoader);
