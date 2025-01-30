@@ -1,0 +1,76 @@
+body {
+    background-image: url("https://image.lexica.art/full_webp/2b5c7ed2-8329-4709-bd7f-3067df6f1647");
+    background-repeat: no-repeat;
+}
+
+.cat-info {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 700px;
+    height: 400px;
+    gap: 0 50px;
+}
+
+.cat-info img {
+    max-width: 50%;
+    height: 100%;
+    object-fit: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.cat-api__temperament {
+    font-weight: 600;
+    color: white;
+}
+
+.date-loader {
+    font-size: 20px;
+    color: aquamarine;
+}
+
+.hide {
+    display: none;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    position: relative;
+    animation: rotate 1s linear infinite;
+}
+.loader::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    inset: 0px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    animation: prixClipFix 2s linear infinite;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes prixClipFix {
+    0% {
+        clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+    }
+    25% {
+        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+    }
+    50% {
+        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+    }
+    75% {
+        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+    }
+    100% {
+        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+    }
+}
