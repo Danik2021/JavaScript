@@ -1,17 +1,23 @@
 {
     "name": "javascript",
     "version": "1.0.0",
-    "main": "index.js",
     "scripts": {
-        "start": "parcel src/templates/*.html",
         "build": "parcel build src/templates/*.html",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "dev": "parcel serve src/templates/*.html",
+        "server": "json-server --watch db.json --port 6565"
     },
     "author": "Danik Yakimenko <danialyakimenko@gmail.com>",
     "license": "ISC",
-    "description": "",
     "dependencies": {
+        "axios": "^1.7.9",
+        "bulma": "^1.0.3",
+        "json-server": "^1.0.0-beta.3",
         "notiflix": "^3.2.8",
         "parcel": "^2.13.3"
+    },
+    "description": "",
+    "devDependencies": {
+        "buffer": "^6.0.3",
+        "process": "^0.11.10"
     }
 }
