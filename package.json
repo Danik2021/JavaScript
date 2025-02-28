@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "scripts": {
         "build": "parcel build src/templates/*.html",
-        "dev": "parcel serve src/templates/*.html",
-        "server": "json-server --watch db.json --port 6565"
+        "dev": "parcel serve src/templates/*.html  /JavaScript/ ",
+        "server": "json-server --watch db.json --port 6565 ./JavaScript/"
     },
     "author": "Danik Yakimenko <danialyakimenko@gmail.com>",
     "license": "ISC",
