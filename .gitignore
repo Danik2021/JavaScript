@@ -1,5 +1,4 @@
 node_modules/
-parcel-cache/
+.parcel-cache/
 dist/
-.DS_Store 
-test.js
+.DS_Store

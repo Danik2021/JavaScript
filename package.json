@@ -2,8 +2,8 @@
     "name": "javascript",
     "version": "1.0.0",
     "scripts": {
-        "build": "parcel build src/templates/*.html",
-        "dev": "parcel serve src/templates/*.html",
+        "build": "parcel build src/templates/main/*.html",
+        "dev": "parcel serve src/templates/main/*.html",
         "server": "json-server --watch db.json --port 6565"
     },
     "author": "Danik Yakimenko <danialyakimenko@gmail.com>",
@@ -18,6 +18,7 @@
     "description": "",
     "devDependencies": {
         "buffer": "^6.0.3",
-        "process": "^0.11.10"
+        "process": "^0.11.10",
+        "svgo": "^3.3.2"
     }
 }
