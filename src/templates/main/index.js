@@ -6,13 +6,30 @@ import SimpleLightbox from "simplelightbox";
 
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-import { onClickSearchButton, onSubmitForm, onClickShowMoreButton } from "./scripts/handlers";
+import {
+    onClickSearchButton,
+    onSubmitForm,
+    onClickShowMoreButton,
+    onScrollGallery,
+    onSearchImages,
+    onLoading,
+} from "./scripts/handlers";
 import { Notification } from "../../models/notification.model";
 
 refs.form.addEventListener("submit", onSubmitForm);
 refs.searchButton.addEventListener("click", onClickSearchButton);
 refs.buttonShowMore.addEventListener("click", onClickShowMoreButton);
+const observer = new IntersectionObserver(
+    (entries) => {
+        const button = entries.find((elem) => elem.isIntersecting);
+        if (button?.isIntersecting) {
+            onSearchImages(state.filter);
+        }
+    },
+    { threshold: 1, rootMargin: "0px" }
+);
 
+observer.observe(refs.buttonShowMore);
 const API_URL = "https://pixabay.com/api/";
 const key = "48781960-dc6df10b20f0dfee4adceb61a";
 
@@ -26,6 +43,12 @@ const otherParams = {
 
 export async function fetchGalleryImages(query) {
     try {
+        console.log("fetchGalleryImages start");
+        onLoading(true);
+
+        await new Promise((res, rej) => {
+            setTimeout(res, 5000);
+        });
         const dataFromApi = await axios.get(API_URL, {
             params: {
                 key,
@@ -35,13 +58,8 @@ export async function fetchGalleryImages(query) {
         });
 
         const colection = dataFromApi.data.hits;
-
-        if (!colection.length) {
-            if (!refs.buttonShowMore.classList.contains("hide")) refs.buttonShowMore.classList.add("hide");
-            throw new Error("Sorry, there are no images matching your search query. Please try again.");
-        }
         refs.buttonShowMore.classList.remove("hide");
-        state.pageNum += 1;
+        otherParams.page += 1;
 
         const massImages = colection.reduce(
             (acc, { webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
@@ -88,5 +106,7 @@ export async function fetchGalleryImages(query) {
         });
     } catch (error) {
         Notification.error(error.message);
+    } finally {
+        onLoading(false);
     }
 }
