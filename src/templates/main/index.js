@@ -3,7 +3,6 @@ import axios from "axios";
 import { refs } from "./scripts/refs";
 import { state } from "./scripts/state";
 import SimpleLightbox from "simplelightbox";
-
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 import {
@@ -15,10 +14,12 @@ import {
     onLoading,
 } from "./scripts/handlers";
 import { Notification } from "../../models/notification.model";
+import { cpuUsage } from "process";
 
 refs.form.addEventListener("submit", onSubmitForm);
 refs.searchButton.addEventListener("click", onClickSearchButton);
 refs.buttonShowMore.addEventListener("click", onClickShowMoreButton);
+
 const observer = new IntersectionObserver(
     (entries) => {
         const button = entries.find((elem) => elem.isIntersecting);
@@ -44,11 +45,11 @@ const otherParams = {
 export async function fetchGalleryImages(query) {
     try {
         console.log("fetchGalleryImages start");
-        onLoading(true);
-
+        onLoading();
         await new Promise((res, rej) => {
-            setTimeout(res, 5000);
+            setTimeout(res, 1000);
         });
+
         const dataFromApi = await axios.get(API_URL, {
             params: {
                 key,
@@ -107,6 +108,6 @@ export async function fetchGalleryImages(query) {
     } catch (error) {
         Notification.error(error.message);
     } finally {
-        onLoading(false);
+        onLoading();
     }
 }

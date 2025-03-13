@@ -608,6 +608,7 @@ var _simplelightboxDefault = parcelHelpers.interopDefault(_simplelightbox);
 var _simpleLightboxMinCss = require("simplelightbox/dist/simple-lightbox.min.css");
 var _handlers = require("./scripts/handlers");
 var _notificationModel = require("../../models/notification.model");
+var _process = require("process");
 (0, _refs.refs).form.addEventListener("submit", (0, _handlers.onSubmitForm));
 (0, _refs.refs).searchButton.addEventListener("click", (0, _handlers.onClickSearchButton));
 (0, _refs.refs).buttonShowMore.addEventListener("click", (0, _handlers.onClickShowMoreButton));
@@ -631,9 +632,9 @@ const otherParams = {
 async function fetchGalleryImages(query) {
     try {
         console.log("fetchGalleryImages start");
-        (0, _handlers.onLoading)(true);
+        (0, _handlers.onLoading)();
         await new Promise((res, rej)=>{
-            setTimeout(res, 5000);
+            setTimeout(res, 1000);
         });
         const dataFromApi = await (0, _axiosDefault.default).get(API_URL, {
             params: {
@@ -682,11 +683,11 @@ async function fetchGalleryImages(query) {
     } catch (error) {
         (0, _notificationModel.Notification).error(error.message);
     } finally{
-        (0, _handlers.onLoading)(false);
+        (0, _handlers.onLoading)();
     }
 }
 
-},{"axios":"jo6P5","./scripts/refs":"goeEE","./scripts/state":"asb99","simplelightbox":"9ydBq","simplelightbox/dist/simple-lightbox.min.css":"kaxSc","./scripts/handlers":"5kh1g","../../models/notification.model":"kYWBY","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jo6P5":[function(require,module,exports,__globalThis) {
+},{"axios":"jo6P5","./scripts/refs":"goeEE","./scripts/state":"asb99","simplelightbox":"9ydBq","simplelightbox/dist/simple-lightbox.min.css":"kaxSc","./scripts/handlers":"5kh1g","../../models/notification.model":"kYWBY","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","process":"d5jf4"}],"jo6P5":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _axiosJsDefault.default));
@@ -5641,7 +5642,9 @@ const refs = {
     input: document.querySelector(".search-form__input"),
     searchButton: document.querySelector(".search-form__button"),
     container: document.querySelector(".gallery"),
-    buttonShowMore: document.querySelector(".gallery-button")
+    buttonShowMore: document.querySelector(".gallery-button"),
+    loader: document.querySelector(".loader"),
+    searchButtonIcon: document.querySelector(".search-form__icon")
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"asb99":[function(require,module,exports,__globalThis) {
@@ -7191,9 +7194,9 @@ function onClickShowMoreButton() {
 function onSearchImages(query) {
     if ((0, _validation.isValidInput)(query)) (0, _index.fetchGalleryImages)(query);
 }
-function onLoading(status) {
-    (0, _refs.refs).searchButton.disabled = status;
-    (0, _refs.refs).buttonShowMore.disabled = status;
+function onLoading() {
+    (0, _refs.refs).loader.classList.toggle("hide");
+    (0, _refs.refs).searchButtonIcon.classList.toggle("hide");
 }
 
 },{"./state":"asb99","./refs":"goeEE","./validation":"lJPJ6","../index":"9Lwpy","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lJPJ6":[function(require,module,exports,__globalThis) {

@@ -23,7 +23,7 @@ export function onSearchImages(query) {
     }
 }
 
-export function onLoading(status) {
-    refs.searchButton.disabled = status;
-    refs.buttonShowMore.disabled = status;
+export function onLoading() {
+    refs.loader.classList.toggle("hide");
+    refs.searchButtonIcon.classList.toggle("hide");
 }
