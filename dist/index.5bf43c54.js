@@ -612,9 +612,16 @@ var _process = require("process");
 (0, _refs.refs).form.addEventListener("submit", (0, _handlers.onSubmitForm));
 (0, _refs.refs).searchButton.addEventListener("click", (0, _handlers.onClickSearchButton));
 (0, _refs.refs).buttonShowMore.addEventListener("click", (0, _handlers.onClickShowMoreButton));
+let contentHeight = null;
+function scrollToBottom() {
+    window.scrollBy({
+        top: (contentHeight - 30) ?? 0,
+        behavior: "smooth"
+    });
+}
 const observer = new IntersectionObserver((entries)=>{
     const button = entries.find((elem)=>elem.isIntersecting);
-    if (button?.isIntersecting) (0, _handlers.onSearchImages)((0, _state.state).filter);
+    if (button?.isIntersecting) (0, _handlers.onSearchImages)((0, _state.state).filter, scrollToBottom);
 }, {
     threshold: 1,
     rootMargin: "0px"
@@ -629,7 +636,7 @@ const otherParams = {
     per_page: 20,
     page: (0, _state.state).pageNum
 };
-async function fetchGalleryImages(query) {
+async function fetchGalleryImages(query, callback) {
     try {
         console.log("fetchGalleryImages start");
         (0, _handlers.onLoading)();
@@ -683,7 +690,9 @@ async function fetchGalleryImages(query) {
     } catch (error) {
         (0, _notificationModel.Notification).error(error.message);
     } finally{
+        if (!contentHeight) contentHeight = (0, _refs.refs).container.offsetHeight;
         (0, _handlers.onLoading)();
+        if (typeof callback === "function") callback();
     }
 }
 
@@ -7191,8 +7200,8 @@ function onClickSearchButton() {
 function onClickShowMoreButton() {
     onSearchImages((0, _state.state).filter);
 }
-function onSearchImages(query) {
-    if ((0, _validation.isValidInput)(query)) (0, _index.fetchGalleryImages)(query);
+function onSearchImages(query, callback) {
+    if ((0, _validation.isValidInput)(query)) (0, _index.fetchGalleryImages)(query, callback);
 }
 function onLoading() {
     (0, _refs.refs).loader.classList.toggle("hide");

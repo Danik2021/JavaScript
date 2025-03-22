@@ -20,11 +20,19 @@ refs.form.addEventListener("submit", onSubmitForm);
 refs.searchButton.addEventListener("click", onClickSearchButton);
 refs.buttonShowMore.addEventListener("click", onClickShowMoreButton);
 
+let contentHeight = null;
+function scrollToBottom() {
+    window.scrollBy({
+        top: contentHeight - 30 ?? 0,
+        behavior: "smooth",
+    });
+}
+
 const observer = new IntersectionObserver(
     (entries) => {
         const button = entries.find((elem) => elem.isIntersecting);
         if (button?.isIntersecting) {
-            onSearchImages(state.filter);
+            onSearchImages(state.filter, scrollToBottom);
         }
     },
     { threshold: 1, rootMargin: "0px" }
@@ -42,7 +50,7 @@ const otherParams = {
     page: state.pageNum,
 };
 
-export async function fetchGalleryImages(query) {
+export async function fetchGalleryImages(query, callback) {
     try {
         console.log("fetchGalleryImages start");
         onLoading();
@@ -108,6 +116,8 @@ export async function fetchGalleryImages(query) {
     } catch (error) {
         Notification.error(error.message);
     } finally {
+        if (!contentHeight) contentHeight = refs.container.offsetHeight;
         onLoading();
+        if (typeof callback === "function") callback();
     }
 }

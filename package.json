@@ -2,8 +2,8 @@
     "name": "javascript",
     "version": "1.0.0",
     "scripts": {
-        "build": "parcel build src/templates/main/*.html",
-        "dev": "parcel serve src/templates/main/*.html",
+        "build": "parcel build src/templates/main/*.html --port 6565",
+        "dev": "parcel serve src/templates/main/*.html --port 6565",
         "server": "json-server --watch db.json --port 6565"
     },
     "author": "Danik Yakimenko <danialyakimenko@gmail.com>",

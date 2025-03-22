@@ -105,6 +105,11 @@
     animation: l3 1s infinite linear;
 }
 
+.box {
+    height: 1000px;
+    background-color: #3652b3;
+}
+
 @keyframes l3 {
     to {
         transform: rotate(1turn);

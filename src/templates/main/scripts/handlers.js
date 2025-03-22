@@ -17,9 +17,9 @@ export function onClickShowMoreButton() {
     onSearchImages(state.filter);
 }
 
-export function onSearchImages(query) {
+export function onSearchImages(query, callback) {
     if (isValidInput(query)) {
-        fetchGalleryImages(query);
+        fetchGalleryImages(query, callback);
     }
 }
 
