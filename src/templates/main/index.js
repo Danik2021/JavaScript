@@ -52,12 +52,7 @@ const otherParams = {
 
 export async function fetchGalleryImages(query, callback) {
     try {
-        console.log("fetchGalleryImages start");
         onLoading();
-        await new Promise((res, rej) => {
-            setTimeout(res, 1000);
-        });
-
         const dataFromApi = await axios.get(API_URL, {
             params: {
                 key,

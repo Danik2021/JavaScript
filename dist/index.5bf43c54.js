@@ -638,11 +638,7 @@ const otherParams = {
 };
 async function fetchGalleryImages(query, callback) {
     try {
-        console.log("fetchGalleryImages start");
         (0, _handlers.onLoading)();
-        await new Promise((res, rej)=>{
-            setTimeout(res, 1000);
-        });
         const dataFromApi = await (0, _axiosDefault.default).get(API_URL, {
             params: {
                 key,
