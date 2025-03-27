@@ -1,0 +1,22 @@
+{
+    "champions": [
+        {
+            "name": "Yasuo",
+            "skills": "Wind",
+            "age": "35"
+        },
+        {
+            "name": "Fiora",
+            "skills": "accuracy",
+            "age": "30"
+        }
+    ],
+    "games": [
+        {
+            "Game-of-the-year": {
+                "2014": "Pubg Mobile",
+                "2006": "Leagea of legends"
+            }
+        }
+    ]
+}

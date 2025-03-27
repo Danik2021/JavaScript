@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 0 10px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.hide {
+  display: none;
+}
+
+img {
+  max-width: 100%;
+}
+/*# sourceMappingURL=index.a94e7003.css.map */
